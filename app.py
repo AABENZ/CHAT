@@ -8,8 +8,12 @@ import os
 from vectors import EmbeddingsManager  # Import the EmbeddingsManager class
 from chatbot import ChatbotManager     # Import the ChatbotManager class
 
-QDRANT_URL = "https://5e5f1562-202f-414f-85e6-b81422b6aa7d.us-east4-0.gcp.cloud.qdrant.io:6333"
-QDRANT_API_KEY = "rz5z7baFJaWN4iLLY46RIbay5NXHNHrNrWRvHeoJwSOhd-Kk9ilPdw"
+# Load environment variables from .env file
+load_dotenv()
+
+# Get the Qdrant URL and API key and Collection name from environment variables
+qdrant_url = os.getenv('QDRANT_URL')
+qdrant_api_key = os.getenv('QDRANT_API_KEY')
 
 
 # Function to display the PDF of a given file
@@ -53,17 +57,17 @@ with st.sidebar:
 
 # Home Page
 if choice == "🏠 Home":
-    st.title("📄 Document Buddy App")
+    st.title("📄 ChatPDF App")
     st.markdown("""
-    Welcome to **Document Buddy App**! 🚀
+    Welcome to **ChatPDF App**! 🚀
 
-    **Built using Open Source Stack (Llama 3.2, BGE Embeddings, and Qdrant running locally within a Docker Container.)**
+    **Built using Open Source Stack (Llama 3.2, BGE Embeddings, and Qdrant.)**
 
     - **Upload Documents**: Easily upload your PDF documents.
     - **Summarize**: Get concise summaries of your documents.
     - **Chat**: Interact with your documents through our intelligent chatbot.
 
-    Enhance your document management experience with Document Buddy! 😊
+    Enhance your document management experience with ChatPDF ! 😊
     """)
 
 # Chatbot Page
